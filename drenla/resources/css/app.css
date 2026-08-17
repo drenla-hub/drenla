@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Mulish', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 0%;
+        --foreground: 0 0% 98%;
+        --card: 0 0% 8%;
+        --card-foreground: 0 0% 98%;
+        --muted: 0 0% 12%;
+        --muted-foreground: 0 0% 62%;
+        --border: 0 0% 16%;
+        --input: 0 0% 8%;
+        --ring: 0 0% 100%;
+        --radius: 0rem;
+        --grid-line-subtle: 0 0% 10%;
+        --text-secondary: 0 0% 64%;
+    }
+
+    * {
+        @apply border-white/10;
+    }
+
+    html {
+        @apply bg-black text-white;
+        color-scheme: dark;
+    }
+
+    body {
+        @apply bg-black text-white antialiased;
+        font-family: 'Mulish', sans-serif;
+        font-weight: 400;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Mulish', sans-serif;
+        font-weight: 300;
+    }
+}
+
+@layer components {
+    .journal-markdown p {
+        margin-bottom: 0.75em;
+    }
+    .journal-markdown p:last-child {
+        margin-bottom: 0;
+    }
+    .journal-markdown strong {
+        @apply font-semibold text-white;
+    }
+    .journal-markdown em {
+        font-style: italic;
+    }
+    .journal-markdown h1,
+    .journal-markdown h2,
+    .journal-markdown h3 {
+        @apply font-semibold text-white;
+        margin: 1em 0 0.4em;
+    }
+    .journal-markdown h1:first-child,
+    .journal-markdown h2:first-child,
+    .journal-markdown h3:first-child {
+        margin-top: 0;
+    }
+    .journal-markdown h1 { font-size: 1.15em; }
+    .journal-markdown h2 { font-size: 1.08em; }
+    .journal-markdown h3 { font-size: 1em; }
+    .journal-markdown ul,
+    .journal-markdown ol {
+        margin: 0.4em 0 0.75em;
+        padding-left: 1.3em;
+    }
+    .journal-markdown ul {
+        list-style: disc;
+    }
+    .journal-markdown ol {
+        list-style: decimal;
+    }
+    .journal-markdown li {
+        margin-bottom: 0.25em;
+    }
+    .journal-markdown blockquote {
+        @apply border-l-2 border-[#333] text-[#999];
+        margin: 0.6em 0;
+        padding-left: 0.9em;
+    }
+    .journal-markdown hr {
+        @apply border-[#1f1f1f];
+        margin: 1em 0;
+    }
+    .journal-markdown a {
+        @apply text-white underline decoration-[#444] underline-offset-2;
+    }
+    .journal-markdown code {
+        @apply bg-[#141414] text-[#ddd];
+        padding: 0.1em 0.35em;
+        font-size: 0.9em;
+        border-radius: 3px;
+    }
+    .journal-markdown pre {
+        @apply bg-[#0a0a0a] border border-[#1f1f1f];
+        margin: 0.6em 0;
+        padding: 0.75em 1em;
+        overflow-x: auto;
+    }
+    .journal-markdown pre code {
+        background: transparent;
+        padding: 0;
+    }
+}
+
+@layer utilities {
+    .grid-overlay-dense {
+        background-image: none;
+    }
+
+    .text-eyebrow {
+        @apply text-[11px] uppercase tracking-[0.32em] text-white/35;
+    }
+
+    .text-headline {
+        @apply text-4xl font-light leading-none tracking-[-0.03em] md:text-5xl;
+    }
+
+    .text-body-large {
+        @apply text-base leading-7 text-white/60;
+    }
+}
