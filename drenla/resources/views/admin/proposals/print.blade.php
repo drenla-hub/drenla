@@ -73,7 +73,12 @@
      *  • All-caps ≥ 4 chars     → grey full-bleed sub-band heading
      *  • Normal                 → paragraph
      */
-    $renderBody = function (string $text): string {
+    $renderBody = function (?string $text): string {
+        $text = trim((string) $text);
+        if ($text === '') {
+            return '';
+        }
+
         $lines    = preg_split('/\r\n|\r|\n/', trim($text));
         $nonEmpty = array_values(array_filter($lines, fn($l) => trim($l) !== ''));
 
@@ -187,7 +192,9 @@
      * .................... (hereafter referred to as the Client)"). Escapes
      * first, then re-introduces exactly these two markers — never raw HTML.
      */
-    $renderTerms = function (string $text): string {
+    $renderTerms = function (?string $text): string {
+        $text = (string) $text;
+
         $escaped = htmlspecialchars($text);
         $escaped = preg_replace('/\*\*(.+?)\*\*/', '<strong>$1</strong>', $escaped);
         $escaped = preg_replace('/(\.{4,}|_{4,})/', '<span class="terms-dots"></span>', $escaped);
